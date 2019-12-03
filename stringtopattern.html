@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<script>
+function sync()
+{
+  var n1 = document.getElementById('n1');
+  var n2 = document.getElementById('n2');
+  
+  var moonlanguage = ""
+  for (var i = 0; i < n1.value.length; i++) {
+    var regextest1 = RegExp('[a-zA-Z]');
+    var regextest2 = RegExp('\\(|\\)|\\.|\\%|\\+|\\-|\\*|\\?|\\[|\\]|\\^|\\$');
+    if (regextest1.test(n1.value[i])) {
+      moonlanguage = moonlanguage.concat('[',n1.value[i].toLowerCase(), n1.value[i].toUpperCase(),']');
+    } else if (regextest2.test(n1.value[i])) {
+      moonlanguage = moonlanguage.concat('%',n1.value[i]);
+    } else {
+      moonlanguage = moonlanguage.concat(n1.value[i]);
+    } ;
+
+  };
+  
+  n2.value = moonlanguage;
+}
+</script>
+
+
+
+String to Lua: <input type="text" name="n1" id="n1" onkeyup="sync()" size="128" /><br>
+Case Insensitive Pattern: <input type="text" name="n2" id="n2" size="128" /><br>
+
+
+
+<p>Lua patterns are similar to Regex. See the following link for details. https://www.lua.org/pil/20.2.html</p>
+
+</body>
+</html>
+
