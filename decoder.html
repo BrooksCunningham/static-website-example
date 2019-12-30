@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
+  <head>
     <meta charset="utf-8">
     <script src="/decoder.js" charset="utf-8"></script>
   </head>
@@ -9,10 +9,14 @@
     <br>
 
     <!-- https://stackoverflow.com/questions/51859358/how-to-read-json-file-with-fetch-in-javascript -->
-    Web Violation Value : <input type="text" name="n1" id="n1" onkeyup="web_decode()" size="128" /><br>
+    <h1>Web Violation Value</h1><input type="text" name="n1" id="n1" onkeyup="web_violation_decode()" size="32" style="font-size:25px;" />
+    <br>
 
-    <pre id="web_violations_decoded"></pre>
-
+    <pre id="web_violations_decoded" style="font-size:25px;">Violations as JSON</pre>
+    <br><br><br>
+    <h1>Web Whitelist Value</h1><input type="text" name="n2" id="n2" onkeyup="web_whitelist_decode()" size="32" style="font-size:25px;" />
+    <br>
+    <pre id="web_whitelist_decoded" style="font-size:25px;">Whitelist as JSON</pre>
 
   </body>
 </html>
