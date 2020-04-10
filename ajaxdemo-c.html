@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+
+<head>
+	<style type="text/css">
+		iframe {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+	<script type="text/javascript">
+
+		window.addEventListener('message', function(text){
+			try {
+				console.log('Got message');
+				console.log(text);
+				document.getElementById('captchaFrame').style.visibility = 'hidden';
+			} catch (e){
+				console.log(e);
+			}			
+		}, false);
+
+		window.onload = function(){
+
+			document.getElementById('button').addEventListener('click', function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', "https://cloudflare.badbotjail.com/ajax_info.txt", true);
+				xhr.withCredentials = true;
+
+				xhr.onreadystatechange = function(){
+					console.log(xhr.readyState + ' ' + xhr.status)
+					if ((xhr.readyState == 4) && (xhr.status == 405)){
+						alert("Received a 405 from origin. Show CAPTCHA form");
+
+
+						if (document.getElementById('captchaFrame')){
+							document.getElementById('captchaFrame').parentNode.removeChild(document.getElementById('captchaFrame'))
+						}
+
+						var iframe = document.createElement('IFRAME');
+						iframe.id = 'captchaFrame'
+						iframe.src = "https://cloudflare.badbotjail.com/distil_r_captcha.html"
+						document.body.appendChild(iframe)							
+
+
+					} else if (xhr.readyState == 4){
+						alert('Response: ' + xhr.status)
+					}
+				}
+
+
+				xhr.send("p=abcdefg");
+			})
+		}
+	</script>
+	<script src="/bot-protection.js" async></script>
+</head>
+
+<body>
+<input type="submit" id="button" name="Click me" value="Click me" style="width: 400px; height: 100px">
+<br><br>
+<input type="text" name="input_headers"/>
+
+</body>
+</html>
