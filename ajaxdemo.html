@@ -27,7 +27,7 @@
 
 			document.getElementById('button').addEventListener('click', function(){
 				var xhr = new XMLHttpRequest();
-				xhr.open('GET', "https://cloudflare.badbotjail.com/ajax_info.txt", true);
+				xhr.open('GET', "https://cloudwaf.badbotjail.com/ajax_info.txt", true);
 				xhr.withCredentials = true;
 
 				xhr.onreadystatechange = function(){
@@ -42,7 +42,7 @@
 
 						var iframe = document.createElement('IFRAME');
 						iframe.id = 'captchaFrame'
-						iframe.src = "https://cloudflare.badbotjail.com/distil_r_captcha.html"
+						iframe.src = "https://cloudwaf.badbotjail.com/distil_r_captcha.html"
 						document.body.appendChild(iframe)							
 
 
