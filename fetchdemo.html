@@ -11,7 +11,7 @@ function postData(url){
     .then(data => { 
           console.log(JSON.stringify(data));
           console.log('postData ran - a1');
-          document.getElementById("fetch_post_demo").innerHTML = JSON.stringify(data);
+          document.getElementById("fetch_post_demo").innerHTML = JSON.stringify(data, null, 2);
           }
         );
   }
