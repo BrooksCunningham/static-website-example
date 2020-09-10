@@ -2,8 +2,8 @@
 <head>
   <script type="text/javascript">
     
-function postData(url){
-    fetch(url, {
+function postData(){
+    fetch(document.getElementById("f_url").value, {
       method: 'POST', 
       body: 'heytherefetch'
     })
@@ -23,22 +23,16 @@ function postData(url){
 <body>
   <h1>Sending a request to https://http.badbotjail.com/post</h1>
   <br><br>
-  <form action="/action_page.php">
-    <label for="f_url">First name:</label><br>
-    <input type="text" id="f_url" name="f_url" value="https://http.badbotjail.com/post"><br><br>
-    <input type="submit" value="Submit", size="24">
-  </form> 
+  <h2>URL to post the fetch request</h2><br><br>
 
-  <input type="text" name="n1" id="n1" size="24" style="font-size:25px;" />
-  <button type="button" onclick="postData('https://http.badbotjail.com/post')" style="width: 400px; height: 100px">Send fetch Post</button>
+  <input type="text" id="f_url" value="https://http.badbotjail.com/post" size="24" style="font-size:25px;" /><br><br>
+  <button type="button" onclick="postData()" style="width: 400px; height: 100px">Send fetch Post</button>
 
   <br><br>
   <pre>
   <div id="fetch_post_demo"><h2>Let fetch change this text</h2></div>
   </pre>
   
-
-
 </body>
 </html>
 
