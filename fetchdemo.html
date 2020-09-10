@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+  <script type="text/javascript">
+    function send_fetch_post() {
+
+      const data = { username: 'example' };
+
+      fetch('https://httpbin.badbotjail.com/post', {
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        document.getElementById("fetch_post_demo").innerHTML = data;
+        
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    }
+  </script>
+
+</head>
+
+<body>
+<button type="button" onclick="send_fetch_post()" style="width: 400px; height: 100px">Send fetch Post</button>
+
+<div id="fetch_post_demo"><h2>Let fetch change this text</h2></div>
+
+//<br><br>
+//<input type="text" name="input_headers"/>
+
+</body>
+</html>
+
