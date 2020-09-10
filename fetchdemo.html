@@ -2,13 +2,18 @@
 <head>
   <script type="text/javascript">
     
-  function postData(url){
+function postData(url){
     fetch(url, {
       method: 'POST', 
       body: 'heytherefetch'
     })
     .then(response => response.json())
-    .then(data => console.log(JSON.stringify(data)));
+    .then(data => { 
+          console.log(JSON.stringify(data));
+          console.log('postData ran');
+          document.getElementById("n1").innerHTML = JSON.stringify(data);
+          }
+        );
   }
     
     
