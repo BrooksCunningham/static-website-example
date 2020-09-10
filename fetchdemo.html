@@ -10,7 +10,7 @@ function postData(url){
     .then(response => response.json())
     .then(data => { 
           console.log(JSON.stringify(data));
-          console.log('postData ran');
+          console.log('postData ran - a1');
           document.getElementById("fetch_post_demo").innerHTML = JSON.stringify(data);
           }
         );
