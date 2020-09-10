@@ -11,7 +11,7 @@ function postData(url){
     .then(data => { 
           console.log(JSON.stringify(data));
           console.log('postData ran');
-          document.getElementById("n1").innerHTML = JSON.stringify(data);
+          document.getElementById("fetch_post_demo").innerHTML = JSON.stringify(data);
           }
         );
   }
@@ -27,7 +27,9 @@ function postData(url){
   <br><br>
   <button type="button" onclick="postData('https://http.badbotjail.com/post')" style="width: 400px; height: 100px">Send fetch Post</button>
   <br><br>
+  <pre>
   <div id="fetch_post_demo"><h2>Let fetch change this text</h2></div>
+  </pre>
 
 
 </body>
