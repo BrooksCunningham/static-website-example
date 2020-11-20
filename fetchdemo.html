@@ -3,10 +3,14 @@
   <script type="text/javascript">
     
 function postData(){
+    if (document.getElementById('include_credentials').checked == true) 
+      {console.log('include_creds'); include_creds = 'include' }
+    else
+      {console.log('boo'); include_creds = 'omit'}
     fetch(document.getElementById("f_url").value, {
       method: 'POST', 
       body: 'heytherefetch',
-      credentials: 'include'
+      credentials: include_creds
     })
     .then(response => response.json())
     .then(data => { 
