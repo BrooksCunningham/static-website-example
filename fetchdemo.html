@@ -5,12 +5,12 @@
 function postData(){
     fetch(document.getElementById("f_url").value, {
       method: 'POST', 
-      body: 'heytherefetch'
+      body: 'heytherefetch',
+      credentials: 'include'
     })
     .then(response => response.json())
     .then(data => { 
           console.log(JSON.stringify(data));
-          console.log('postData ran - a1');
           document.getElementById("fetch_post_demo").innerHTML = JSON.stringify(data, null, 2);
           }
         );
