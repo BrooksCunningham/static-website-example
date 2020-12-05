@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head><script src="/nling-the-stredrene-bring-Peaces-oncile-Courious" async></script>
+  <script type="text/javascript">
+    
+function postData(){
+    if (document.getElementById('include_credentials').checked == true) 
+      {console.log('include_creds'); include_creds = 'include' }
+    else
+      {console.log('boo'); include_creds = 'omit'}
+    fetch(document.getElementById("f_url").value, {
+      method: 'POST', 
+      body: 'heytherefetch',
+      credentials: include_creds
+    })
+    .then(response => response.json())
+    .then(data => { 
+          console.log(JSON.stringify(data));
+          document.getElementById("fetch_post_demo").innerHTML = JSON.stringify(data, null, 2);
+          }
+        );
+  }
+    
+    
+  </script>
+
+</head>
+<body>
+  <h1>Sending a request to https://http.badbotjail.com/post</h1>
+  <br><br>
+  <h2>URL to post the fetch request</h2><br><br>
+
+  <input type="text" id="f_url" value="https://http.badbotjail.com/post" size="48" style="font-size:25px;" /><br>
+  <input type="checkbox" id="include_credentials" name="include_credentials_true" value="credentials_set_to_include">
+  <label for="include_credentials_true"> credentials set to include</label><br><br>
+  <button type="button" onclick="postData()" style="font-size:25px; width: 400px; height: 100px">Send fetch Post</button>
+
+  <br><br>
+  <pre>
+  <div id="fetch_post_demo"><h2>Let fetch change this text</h2></div>
+  </pre>
+  
+</body>
+</html>
+
