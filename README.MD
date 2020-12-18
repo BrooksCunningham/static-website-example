@@ -1,7 +1,7 @@
 Static Website Example
 ----------------------
 
-To be used with Cloud Academy labs.
+Used for client side web apps and testing concepts.
 
 
 License
