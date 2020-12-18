@@ -46,6 +46,15 @@ function postData(){
         return response.text().then(text => {
           document.getElementById("fetch_post_demo").innerHTML = 'The response was not JSON' ;
         // this is text, do something with it
+          
+          if (document.getElementById('captchaFrame')){
+            document.getElementById('captchaFrame').parentNode.removeChild(document.getElementById('captchaFrame'))
+          }
+
+          var iframe = document.createElement('IFRAME');
+          iframe.id = 'captchaFrame'
+          iframe.src = "https://cloudwaf.badbotjail.com/imperva_captcha.html"
+          document.body.appendChild(iframe)
         });
       }
     });        
