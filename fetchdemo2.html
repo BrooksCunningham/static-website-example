@@ -6,23 +6,32 @@ function postData(){
     if (document.getElementById('include_credentials').checked == true) 
       {console.log('include_creds'); include_creds = 'include' }
     else
-      {console.log('boo'); include_creds = 'omit'}
+      {console.log('Not including credentials'); include_creds = 'omit'}
     fetch(document.getElementById("f_url").value, {
       method: 'POST', 
       body: 'heytherefetch',
       credentials: include_creds
     })
-    .then(response => response.json())
-    .then(data => { 
+    .then(response =>   {
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(data => {
           console.log(JSON.stringify(data));
           document.getElementById("fetch_post_demo").innerHTML = JSON.stringify(data, null, 2);
-          }
-        );
-  }
+          });
+      } else {
+        return response.text().then(text => {
+          document.getElementById("fetch_post_demo").innerHTML = 'The response was not JSON' ;
+        // this is text, do something with it
+        });
+      }
+    });        
+}
+    
     
     
   </script>
-
+<!-- https://stackoverflow.com/questions/37121301/how-to-check-if-the-response-of-a-fetch-is-a-json-object-in-javascript -->
 </head>
 <body>
   <h1>Sending a request to https://http.badbotjail.com/post</h1>
