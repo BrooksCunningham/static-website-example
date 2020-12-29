@@ -27,13 +27,13 @@
 
 			document.getElementById('button').addEventListener('click', function(){
 				var xhr = new XMLHttpRequest();
-				xhr.open('GET', "https://cloudwaf.badbotjail.com/ajax_info.txt", true);
+				xhr.open('GET', "https://cloudflare.badbotjail.com/ajax_info.txt", true);
 				xhr.withCredentials = true;
 
 				xhr.onreadystatechange = function(){
 					console.log(xhr.readyState + ' ' + xhr.status)
-					if ((xhr.readyState == 4) && (xhr.status == 456)){
-						alert("Received a 456 from origin. Show CAPTCHA form");
+					if ((xhr.readyState == 4) && (xhr.status == 405)){
+						alert("Received a 405 from origin. Show CAPTCHA form");
 
 
 						if (document.getElementById('captchaFrame')){
@@ -42,7 +42,7 @@
 
 						var iframe = document.createElement('IFRAME');
 						iframe.id = 'captchaFrame'
-						iframe.src = "https://cloudwaf.badbotjail.com/distil_r_captcha.html"
+						iframe.src = "https://cloudflare.badbotjail.com/distil_r_captcha.html"
 						document.body.appendChild(iframe)							
 
 

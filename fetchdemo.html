@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PM96HQ');</script>
+  <!-- End Google Tag Manager -->
+  
+  <script type="text/javascript">
+function postData(){
+    if (document.getElementById('include_credentials').checked == true) 
+      {console.log('include_creds'); include_creds = 'include' }
+    else
+      {console.log('boo'); include_creds = 'omit'}
+    fetch(document.getElementById("f_url").value, {
+      method: 'POST', 
+      body: 'heytherefetch',
+      credentials: include_creds
+    })
+    .then(response => response.json())
+    .then(data => { 
+          console.log(JSON.stringify(data));
+          document.getElementById("fetch_post_demo").innerHTML = JSON.stringify(data, null, 2);
+          }
+        );
+  }
+    
+    
+  </script>
+
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PM96HQ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+  <h1>Sending a request to https://http.badbotjail.com/post</h1>
+  <br><br>
+  <h2>URL to post the fetch request</h2><br><br>
+
+  <input type="text" id="f_url" value="https://http.badbotjail.com/post" size="48" style="font-size:25px;" /><br>
+  <input type="checkbox" id="include_credentials" name="include_credentials_true" value="credentials_set_to_include">
+  <label for="include_credentials_true"> credentials set to include</label><br><br>
+  <button type="button" onclick="postData()" style="font-size:25px; width: 400px; height: 100px">Send fetch Post</button>
+
+  <br><br>
+  <pre>
+  <div id="fetch_post_demo"><h2>Let fetch change this text</h2></div>
+  </pre>
+  
+</body>
+</html>
+

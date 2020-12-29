@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head><script src="/nling-the-stredrene-bring-Peaces-oncile-Courious" async></script>
+  
+    <style type="text/css">
+      iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      }
+    </style>
+
+    <script type="text/javascript">
+    window.addEventListener('message', function(text){
+    try {
+      console.log('Got message');
+      console.log(text);
+      document.getElementById('captchaFrame').style.visibility = 'hidden';
+      if (document.getElementById('captchaFrame')){
+        document.getElementById('captchaFrame').parentNode.removeChild(document.getElementById('captchaFrame'))
+      }
+    } catch (e){
+      console.log(e);
+    } 
+    }, false);
+    
+    
+// https://stackoverflow.com/questions/37121301/how-to-check-if-the-response-of-a-fetch-is-a-json-object-in-javascript
+function postData(){
+    if (document.getElementById('include_credentials').checked == true) 
+      {console.log('include_creds'); include_creds = 'include' }
+    else
+      {console.log('Not including credentials'); include_creds = 'omit'}
+    fetch(document.getElementById("f_url").value, {
+      method: 'POST', 
+      body: 'heytherefetch',
+      credentials: include_creds
+    })
+    .then(response =>   {
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(data => {
+          console.log(JSON.stringify(data));
+          document.getElementById("fetch_post_demo").innerHTML = JSON.stringify(data, null, 2);
+          });
+      } else {
+        return response.text().then(text => {
+          document.getElementById("fetch_post_demo").innerHTML = 'The response was not JSON' ;
+        // this is text, do something with it
+          
+          if (document.getElementById('captchaFrame')){
+            document.getElementById('captchaFrame').parentNode.removeChild(document.getElementById('captchaFrame'))
+          }
+
+          var iframe = document.createElement('IFRAME');
+          iframe.id = 'captchaFrame'
+          iframe.src = "https://cloudwaf.badbotjail.com/imperva_captcha.html"
+          document.body.appendChild(iframe)
+        });
+      }
+    });        
+}
+    
+    
+    
+  </script>
+</head>
+<body>
+  <h1>Send a request to https://cloudwaf.badbotjail.com/post?captcha</h1>
+  <br><br>
+  <h2>URL to post the fetch request</h2><br><br>
+
+  <input type="text" id="f_url" value="https://cloudwaf.badbotjail.com/post?captcha" size="48" style="font-size:25px;" /><br>
+  <input type="checkbox" id="include_credentials" name="include_credentials_true" value="credentials_set_to_include" checked>
+  
+  <label for="include_credentials_true"> credentials set to include</label><br><br>
+  <button type="button" onclick="postData()" style="font-size:25px; width: 400px; height: 100px">Send fetch Post</button>
+
+  <br><br>
+  <pre>
+  <div id="fetch_post_demo"><h2>Let fetch change this text</h2></div>
+  </pre>
+  
+</body>
+</html>
+
