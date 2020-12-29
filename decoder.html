@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    <meta charset="utf-8">
+    <script src="/decoder.js" charset="utf-8"></script>
+		<script src="/bundle.js" charset="utf-8"></script>
+
+		<!-- <script src="/bon_encryption.js" charset="utf-8"></script>
+	   <script src="/foo.js" charset="utf-8"></script> -->
+
+  </head>
+  <body>
+    <br>
+    <br>
+
+    <!-- https://stackoverflow.com/questions/51859358/how-to-read-json-file-with-fetch-in-javascript -->
+    <h1>Web Violation Value</h1><input type="text" name="n1" id="n1" onkeyup="web_violation_decode()" size="32" style="font-size:25px;" />
+    <br>
+
+    <pre id="web_violations_decoded" style="font-size:25px;">Violations as JSON</pre>
+    <br><br><br>
+    <h1>Web Whitelist Value</h1><input type="text" name="n2" id="n2" onkeyup="web_whitelist_decode()" size="32" style="font-size:25px;" />
+    <br>
+    <pre id="web_whitelist_decoded" style="font-size:25px;">Whitelist as JSON</pre>
+		<br>
+		<h1>ABP Token Decryption</h1>
+		<h2>Encrypted token</h2>
+		<input type="text" name="abp_token" id="abp_token" onkeyup="abp.decrypt_abp_token_in_browser()" size="32" style="font-size:25px;" />
+		<h2>Decryption key</h2>
+		<input type="text" name="abp_decryption_key" id="abp_decryption_key" onkeyup="abp.decrypt_abp_token_in_browser()" size="32" style="font-size:25px;" />
+		<br>
+		<pre id="abp_token_decryption" style="font-size:25px;">Decrypted token</pre>
+
+  </body>
+</html>
