@@ -8,7 +8,7 @@ function sync()
 {
   var n1 = document.getElementById('n1');
   var n2 = document.getElementById('n2');
-  
+
   var moonlanguage = ""
   for (var i = 0; i < n1.value.length; i++) {
     var regextest1 = RegExp('[a-zA-Z]');
@@ -22,20 +22,22 @@ function sync()
     } ;
 
   };
-  
-  n2.value = moonlanguage;
+
+  n2.innerHTML = moonlanguage;
 }
 </script>
 
 
 
-String to Lua: <input type="text" name="n1" id="n1" onkeyup="sync()" size="128" /><br>
-Case Insensitive Pattern: <input type="text" name="n2" id="n2" size="128" /><br>
+<h1>String to Lua</h1> <input type="text" name="n1" id="n1" onkeyup="sync()" size="128" style="font-size:25px;" /><br>
+<h1>Case Insensitive Pattern</h1>
+<!--<input type="text" name="n2" id="n2" size="128" /> -->
+  <pre name="n2" id="n2" style="font-size:25px;">-----</pre>
+  <br>
 
 
 
-<p>Lua patterns are similar to Regex. See the following link for details. https://www.lua.org/pil/20.2.html</p>
+<p>Lua patterns are similar to Regex. See the following link for details.  <a href="https://www.lua.org/pil/20.2.html">https://www.lua.org/pil/20.2.html</a> </p>
 
 </body>
 </html>
-

@@ -1,0 +1,14 @@
+{
+    "2": "Country ACL",
+    "8": "Search Engine",
+    "16": "Social Media",
+    "32": "Internal Request",
+    "64": "Referrer ACL",
+    "2048": "IP ACL",
+    "1048576": "GeoIP Org ACL",
+    "4194304": "User Agent ACL",
+    "8388608": "Unique Identifier ACL",
+    "16777216": "Header Name, Value ACL",
+    "134217728": "ACL Extension",
+    "268435456": "Postback Rule"
+}
