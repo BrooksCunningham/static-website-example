@@ -19,9 +19,10 @@ fetch("chrome-extension://mooikfkahbdckldjjndioackbalphokd/indicator.html", {
   .then(response => response.text())
   .then(data => {
     if (data.includes("Selenium")) {
-      console.log("Selenium IDE found");
+      fetch("/robots.txt?extensions=Selenium");
+      console.log("Selenium IDE: Found");
     } else {
-      console.log("Selenium IDE Missing")
+      console.log("Selenium IDE: Missing")
     }
   });
     </script>
