@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Detecting Plugins</title>
+  </head>
+  <body>
+    <h1>Check out the console</h1>
+
+    <script>
+fetch("chrome-extension://mooikfkahbdckldjjndioackbalphokd/indicator.html", {
+  "referrer": "",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": null,
+  "method": "GET",
+  "mode": "cors",
+  "credentials": "omit"
+})
+  .then(response => response.text())
+  .then(data => {
+    if (data.includes("Selenium")) {
+      console.log("Selenium IDE found");
+    } else {
+      console.log("Selenium IDE Missing")
+    }
+  });
+    </script>
+  </body>
+</html>
