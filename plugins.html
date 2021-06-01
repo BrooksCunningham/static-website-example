@@ -8,23 +8,32 @@
     <h1>Check out the console</h1>
 
     <script>
-fetch("chrome-extension://mooikfkahbdckldjjndioackbalphokd/indicator.html", {
-  "referrer": "",
-  "referrerPolicy": "strict-origin-when-cross-origin",
-  "body": null,
-  "method": "GET",
-  "mode": "cors",
-  "credentials": "omit"
-})
-  .then(response => response.text())
-  .then(data => {
-    if (data.includes("Selenium")) {
-      fetch("/robots.txt?extensions=selenium_ide");
-      console.log("Selenium IDE: Found");
-    } else {
-      console.log("Selenium IDE: Missing")
-    }
-  });
+function test_selenium_ide() {
+  fetch("chrome-extension://mooikfkahbdckldjjndioackbalphokd/indicator.html", {
+    "referrer": "",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": null,
+    "method": "GET",
+    "mode": "cors",
+    "credentials": "omit"
+  })
+    .then(response => response.text())
+    .then(data => {
+      if (data.includes("Selenium")) {
+        fetch("/robots.txt?extensions=selenium_ide");
+        console.log("Selenium IDE: Found");
+      } else {
+        console.log("Selenium IDE: Missing")
+      }
+    });
+}
+
+async function get_installed_plugins() {
+  //TODO allow for selective testing of abusive plugins
+  await test_selenium_ide();
+}
+
+get_installed_plugins()
     </script>
   </body>
 </html>
